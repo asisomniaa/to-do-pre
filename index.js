@@ -1,4 +1,4 @@
-let items = [
+const items = [
   "Сделать проектную работу",
   "Полить цветы",
   "Пройти туториал по Реакту",
@@ -49,7 +49,7 @@ function createItem(item) {
   });
 
   textElement.addEventListener('blur', () => {
-    textElement.setAttribute('contenteditable', 'false');
+    textElement.removeAttribute('contenteditable');
     saveTasks(getTasksFromDOM());
   });
 
@@ -72,9 +72,9 @@ function saveTasks(tasks) {
 }
 
 
-items = loadTasks();
+let currentItems = loadTasks();
 
-items.forEach((item) => {
+currentItems.forEach((item) => {
   const itemElement = createItem(item);
   listElement.append(itemElement);
 });
